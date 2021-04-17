@@ -1,10 +1,10 @@
 export default class FPS {
-	fpsSpan: HTMLSpanElement;
-	constructor() {
+	public fpsSpan: HTMLSpanElement;
+	public constructor() {
 		this.fpsSpan = <HTMLSpanElement>document.getElementById('fps-span');
 	}
 
-	public updateFPS(fps: number) {
+	public updateFPS(fps: number): void {
 		this.fpsSpan.textContent = 'FPS: ' + fps;
 	}
 }

@@ -1,6 +1,6 @@
 import Game from './game';
 
-window.onload = () => {
+window.onload = (): void => {
 	const game = new Game();
 	game.start();
 };

@@ -8,7 +8,7 @@ export default class Game {
 	public oldTimeStamp = 0;
 	public context: CanvasRenderingContext2D;
 
-	constructor() {
+	public constructor() {
 		// TODO place in World or something class.
 		const terrainCanvas = <HTMLCanvasElement>(
 			document.getElementById('terrain-canvas')
