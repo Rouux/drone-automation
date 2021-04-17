@@ -32,6 +32,7 @@ module.exports = {
 				ignoreRegExpLiterals: true
 			}
 		],
+		'object-curly-spacing': 'off',
 		'@typescript-eslint/explicit-function-return-type': 'warn',
 		'@typescript-eslint/explicit-member-accessibility': 'warn'
 	}

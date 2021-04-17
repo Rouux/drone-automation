@@ -4,6 +4,7 @@ body {
 }
 
 #terrain-canvas,
+#entity-canvas,
 #ui-canvas {
 	position: absolute;
 }

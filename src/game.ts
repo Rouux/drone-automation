@@ -1,4 +1,5 @@
 import FPS from './fps';
+import Player from './player';
 
 const WIDTH = 480;
 const HEIGHT = 480;
@@ -6,7 +7,9 @@ const HEIGHT = 480;
 export default class Game {
 	public fps = new FPS();
 	public oldTimeStamp = 0;
-	public context: CanvasRenderingContext2D;
+	public terrainContext: CanvasRenderingContext2D;
+	public entityContext: CanvasRenderingContext2D;
+	public player: Player;
 
 	public constructor() {
 		// TODO place in World or something class.
@@ -15,7 +18,14 @@ export default class Game {
 		);
 		terrainCanvas.width = WIDTH;
 		terrainCanvas.height = HEIGHT;
-		this.context = terrainCanvas.getContext('2d');
+		this.terrainContext = terrainCanvas.getContext('2d');
+		this.player = new Player(0, 0);
+		const entityCanvas = <HTMLCanvasElement>(
+			document.getElementById('entity-canvas')
+		);
+		entityCanvas.width = WIDTH;
+		entityCanvas.height = HEIGHT;
+		this.entityContext = entityCanvas.getContext('2d');
 	}
 
 	public start(): void {
@@ -39,9 +49,11 @@ export default class Game {
 
 	private draw(): void {
 		this.clearCanvas();
+		this.player.draw();
 	}
 
 	private clearCanvas(): void {
-		this.context.clearRect(0, 0, WIDTH, HEIGHT);
+		this.terrainContext.clearRect(0, 0, WIDTH, HEIGHT);
+		this.entityContext.clearRect(0, 0, WIDTH, HEIGHT);
 	}
 }
