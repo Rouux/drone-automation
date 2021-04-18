@@ -1,3 +1,4 @@
+import { PLAYER_UPDATE } from '../events/events';
 import Game, { WIDTH } from '../game';
 
 export default class UIManager {
@@ -22,7 +23,7 @@ export default class UIManager {
 		const playerSpan = <HTMLSpanElement>document.getElementById('player-span');
 		const { x, y } = game.entityManager.player;
 		this.updatePlayerPosition(x, y, playerSpan);
-		window.addEventListener('player-update', ({ detail }: CustomEvent) =>
+		window.addEventListener(PLAYER_UPDATE, ({ detail }: CustomEvent) =>
 			this.updatePlayerPosition(detail.x, detail.y)
 		);
 		return playerSpan;

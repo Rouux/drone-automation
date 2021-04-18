@@ -1,6 +1,7 @@
 import Camera from '../camera';
 import Entity from '../../entities/entity';
 import Player from '../../entities/player';
+import { CAMERA_UPDATE } from '../events/events';
 
 export default class EntityManager {
 	public camera: Camera;
@@ -19,7 +20,7 @@ export default class EntityManager {
 		this.canvas.height = height;
 		this.renderer = this.canvas.getContext('2d');
 
-		window.addEventListener('camera-update', ({ detail }: CustomEvent) => {
+		window.addEventListener(CAMERA_UPDATE, ({ detail }: CustomEvent) => {
 			this.renderer.setTransform(1, 0, 0, 1, -detail.x, -detail.y);
 			this.forceRedraw = true;
 		});

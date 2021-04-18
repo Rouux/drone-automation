@@ -1,3 +1,5 @@
+import { CAMERA_UPDATE } from './events/events';
+
 export default class Camera {
 	public x = 0;
 	public y = 0;
@@ -19,6 +21,6 @@ export default class Camera {
 			width: this.width,
 			height: this.height
 		};
-		window.dispatchEvent(new CustomEvent('camera-update', { detail }));
+		window.dispatchEvent(new CustomEvent(CAMERA_UPDATE, { detail }));
 	}
 }

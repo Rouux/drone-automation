@@ -1,3 +1,4 @@
+import { CAMERA_UPDATE } from '../events/events';
 import World from '../terrain/world';
 
 export default class TerrainManager {
@@ -13,7 +14,7 @@ export default class TerrainManager {
 		this.renderer = this.canvas.getContext('2d');
 		this.renderer.imageSmoothingEnabled = false;
 
-		window.addEventListener('camera-update', ({ detail }: CustomEvent) => {
+		window.addEventListener(CAMERA_UPDATE, ({ detail }: CustomEvent) => {
 			this.draw(detail.x, detail.y, detail.width, detail.height);
 		});
 	}
