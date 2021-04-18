@@ -1,25 +1,25 @@
+import Camera from './camera';
+import EntityManager from './entity-manager';
+import TerrainManager from './terrain-manager';
 import FPS from './fps';
-import Player from './player';
 
-const WIDTH = 480;
-const HEIGHT = 480;
+const WIDTH = 1024;
+const HEIGHT = 512;
+const CAMERA_WIDTH = 256;
+const CAMERA_HEIGHT = 128;
 
 export default class Game {
+	public camera: Camera;
+	public entityContext: CanvasRenderingContext2D;
 	public fps = new FPS();
 	public oldTimeStamp = 0;
-	public terrainContext: CanvasRenderingContext2D;
-	public entityContext: CanvasRenderingContext2D;
-	public player: Player;
+	public terrainManager: TerrainManager;
+	public entityManager: EntityManager;
 
 	public constructor() {
-		// TODO place in World or something class.
-		const terrainCanvas = <HTMLCanvasElement>(
-			document.getElementById('terrain-canvas')
-		);
-		terrainCanvas.width = WIDTH;
-		terrainCanvas.height = HEIGHT;
-		this.terrainContext = terrainCanvas.getContext('2d');
-		this.player = new Player(0, 0);
+		this.terrainManager = new TerrainManager(WIDTH, HEIGHT);
+		this.camera = new Camera(0, 0, CAMERA_WIDTH, CAMERA_HEIGHT);
+		this.entityManager = new EntityManager(this.camera, WIDTH, HEIGHT);
 		const entityCanvas = <HTMLCanvasElement>(
 			document.getElementById('entity-canvas')
 		);
@@ -49,11 +49,10 @@ export default class Game {
 
 	private draw(): void {
 		this.clearCanvas();
-		this.player.draw();
+		this.entityManager.draw();
 	}
 
 	private clearCanvas(): void {
-		this.terrainContext.clearRect(0, 0, WIDTH, HEIGHT);
 		this.entityContext.clearRect(0, 0, WIDTH, HEIGHT);
 	}
 }

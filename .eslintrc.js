@@ -15,7 +15,7 @@ module.exports = {
 		'indent': ['error', 'tab'],
 		'comma-dangle': 'off',
 		'require-jsdoc': 'off',
-		'curly': ['error', 'multi'],
+		'curly': ['error', 'multi-or-nest'],
 		'eqeqeq': 'error',
 		'no-invalid-this': 'off',
 		'no-else-return': 'error',
@@ -33,6 +33,7 @@ module.exports = {
 			}
 		],
 		'object-curly-spacing': 'off',
+		'arrow-parens': ['error', 'as-needed'],
 		'@typescript-eslint/explicit-function-return-type': 'warn',
 		'@typescript-eslint/explicit-member-accessibility': 'warn'
 	}

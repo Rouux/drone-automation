@@ -10,11 +10,12 @@
 
 		<link rel="shortcut icon" href="#" />
 		<link rel="stylesheet" href="css/styles.css" />
+		<script src="http://joeiddon.github.io/perlin/perlin.js"></script>
 	</head>
 
 	<body>
-		<canvas id="terrain-canvas"></canvas>
-		<canvas id="entity-canvas"></canvas>
+		<canvas id="terrain-canvas" style="z-index: 0;"></canvas>
+		<canvas id="entity-canvas" style="z-index: 2;"></canvas>
 		<span id="fps-span">FPS : 60</span>
 
 		<script src="js/bundle.js"></script>

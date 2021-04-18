@@ -13,9 +13,13 @@ la fonction. Ou plutot, utiliser eval pour réaffecter a la window
 les fonctions utilisateurs.
 Qu'il puisse les utiliser a nouveau.
 
+Les managers gèrent le canvas associé et le context2d (render) associé.
+Le draw des "enfants" (entity, player, resource) prendra le render en param.
+Le update des "enfants" (entity, player, resource) prendra le delta (ms) en param.
+
 ## Canvas
 
-Canvas :
+Canvas (& Managers) :
 
 - Terrain (ground, water)
 - Resources (Mineral, trees)

@@ -1,21 +1,30 @@
+import EntityManager from './entity-manager';
+
 export default class Entity {
+	private static _manager: EntityManager;
 	protected _x = 0;
 	protected _y = 0;
-	public canvas: HTMLCanvasElement;
-	public render: CanvasRenderingContext2D;
+	public needRedraw = false;
 
 	public constructor(x: number, y: number) {
-		this.$goto(x, y);
-		this.canvas = <HTMLCanvasElement>document.getElementById('entity-canvas');
-		this.render = this.canvas.getContext('2d');
+		this.goto(x, y);
+		Entity._manager.add(this);
 	}
 
-	public draw(): void {}
+	public draw(renderer: CanvasRenderingContext2D): void {}
 
-	public $goto = (x: number, y: number): void => {
+	public goto(x: number, y: number): void {
 		this.x = x;
 		this.y = y;
-	};
+	}
+
+	public get manager(): EntityManager {
+		return Entity._manager;
+	}
+
+	public static set manager(value: EntityManager) {
+		Entity._manager = value;
+	}
 
 	public get x(): number {
 		return this._x;
