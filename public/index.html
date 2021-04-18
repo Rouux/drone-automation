@@ -14,9 +14,12 @@
 	</head>
 
 	<body>
-		<canvas id="terrain-canvas" style="z-index: 0;"></canvas>
-		<canvas id="entity-canvas" style="z-index: 2;"></canvas>
-		<span id="fps-span">FPS : 60</span>
+		<canvas id="terrain-canvas" style="z-index: 0"></canvas>
+		<canvas id="entity-canvas" style="z-index: 2"></canvas>
+		<div id="ui" style="z-index: 3">
+			<span id="fps-span">FPS: 60</span>
+			<span id="player-span">(0, 0)</span>
+		</div>
 
 		<script src="js/bundle.js"></script>
 	</body>

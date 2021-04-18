@@ -4,15 +4,27 @@ body {
 }
 
 #terrain-canvas,
-#entity-canvas,
-#ui-canvas {
+#entity-canvas {
 	position: absolute;
 	border: 3px solid black;
 }
 
-#fps-span {
+#ui {
 	position: absolute;
+	border: 3px solid transparent;
 	font-size: 16px;
 	font-weight: bold;
 	font-family: Arial, Helvetica, sans-serif;
+}
+
+#ui > * {
+	padding: 2px 5px;
+}
+
+#player-span {
+	float: left;
+}
+
+#fps-span {
+	float: right;
 }

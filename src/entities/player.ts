@@ -26,6 +26,9 @@ export default class Player extends Entity {
 		const deltaY = y - this.y;
 		this.camera.translate(deltaX, deltaY);
 		super.goto(x, y);
+		window.dispatchEvent(
+			new CustomEvent('player-update', { detail: { x, y } })
+		);
 	};
 
 	public move(x = 0, y = 0): void {
