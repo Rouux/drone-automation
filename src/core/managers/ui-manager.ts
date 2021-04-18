@@ -10,31 +10,26 @@ export default class UIManager {
 	public constructor(game: Game) {
 		this.game = game;
 		this.ui = <HTMLDivElement>document.getElementById('ui');
-		this.playerSpan = this.initPlayerPositionSpan(game);
-		this.fpsSpan = <HTMLSpanElement>document.getElementById('fps-span');
 		this.ui.style.width = WIDTH + 'px';
+		this.playerSpan = <HTMLSpanElement>document.getElementById('player-span');
+		this.fpsSpan = <HTMLSpanElement>document.getElementById('fps-span');
+		this.initPlayerPositionSpan(game);
 	}
 
 	public update(delta: number): void {
 		this.updateFPS(Math.round(1000 / delta));
 	}
 
-	private initPlayerPositionSpan(game: Game): HTMLSpanElement {
-		const playerSpan = <HTMLSpanElement>document.getElementById('player-span');
+	private initPlayerPositionSpan(game: Game): void {
 		const { x, y } = game.entityManager.player;
-		this.updatePlayerPosition(x, y, playerSpan);
+		this.updatePlayerPosition(x, y);
 		window.addEventListener(PLAYER_UPDATE, ({ detail }: CustomEvent) =>
 			this.updatePlayerPosition(detail.x, detail.y)
 		);
-		return playerSpan;
 	}
 
-	private updatePlayerPosition(
-		x: number,
-		y: number,
-		span = this.playerSpan
-	): void {
-		span.textContent = `(${Math.round(x)}, ${Math.round(y)})`;
+	private updatePlayerPosition(x: number, y: number): void {
+		this.playerSpan.textContent = `(${Math.round(x)}, ${Math.round(y)})`;
 	}
 
 	private updateFPS(fps: number): void {
