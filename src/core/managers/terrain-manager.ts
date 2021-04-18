@@ -1,4 +1,4 @@
-import World from './world';
+import World from '../terrain/world';
 
 export default class TerrainManager {
 	public world: World;

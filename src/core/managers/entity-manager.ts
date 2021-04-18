@@ -1,6 +1,6 @@
-import Camera from './camera';
-import Entity from './entity';
-import Player from './player';
+import Camera from '../camera';
+import Entity from '../../entities/entity';
+import Player from '../../entities/player';
 
 export default class EntityManager {
 	public camera: Camera;
@@ -27,6 +27,8 @@ export default class EntityManager {
 	}
 
 	public draw(): void {
+		// this.entityContext.clearRect(0, 0, WIDTH, HEIGHT);
+
 		this.entities
 			.filter(entity => this.forceRedraw || entity.needRedraw)
 			.forEach(entity => entity.draw(this.renderer));

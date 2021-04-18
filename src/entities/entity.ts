@@ -1,4 +1,4 @@
-import EntityManager from './entity-manager';
+import EntityManager from '../core/managers/entity-manager';
 
 export default class Entity {
 	private static _manager: EntityManager;

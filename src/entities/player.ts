@@ -1,4 +1,4 @@
-import Camera from './camera';
+import Camera from '../core/camera';
 import Entity from './entity';
 
 export default class Player extends Entity {
@@ -22,12 +22,14 @@ export default class Player extends Entity {
 	}
 
 	public $goto = (x: number, y: number): void => {
+		const deltaX = x - this.x;
+		const deltaY = y - this.y;
+		this.camera.translate(deltaX, deltaY);
 		super.goto(x, y);
 	};
 
 	public move(x = 0, y = 0): void {
 		this.$goto(this.x + x, this.y + y);
-		this.camera.translate(x, y);
 	}
 
 	public $up = (value: number): void => this.move(0, -value);

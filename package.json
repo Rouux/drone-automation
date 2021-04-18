@@ -4,9 +4,9 @@
 	"description": "A little work in TS and HTML Canvas, having fun here ! ",
 	"main": "stc/index.ts",
 	"scripts": {
-		"start": "webpack -w",
+		"start": "webpack -w --mode=development",
 		"build": "webpack",
-		"build:prod": "npm run lint && webpack",
+		"build:prod": "npm run lint && npm run prettier && webpack --mode=production",
 		"lint": "eslint src/**/*.ts",
 		"prettier": "prettier src/ -w",
 		"postinstall": "npm run build"
